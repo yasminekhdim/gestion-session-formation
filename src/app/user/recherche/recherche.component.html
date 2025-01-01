@@ -1,0 +1,78 @@
+<!-- Titre Principal -->
+<div class="container ">
+  <div class="text-center">
+    <h1 class="display-4 text-primary">Rechercher une Formation</h1>
+    <p class="lead mt-3">Saisissez le nom de la formation que vous souhaitez trouver.</p>
+  </div>
+  <!-- Champ de Recherche 
+   <div class="container py-5">
+  <div class="input-group mb-4">
+    <input type="text" [(ngModel)]="searchText" placeholder="Saisir le nom de votre formation..."
+      class="form-control" />
+    <button (click)="search()" class="btn btn-primary">Rechercher</button>
+  </div></div>-->
+
+  <!-- Résultats de la Recherche
+    <div *ngIf="filteredFormations.length > 0" class="mt-4">
+      <ul class="list-group">
+        <li 
+          *ngFor="let formation of filteredFormations" 
+          class="list-group-item d-flex justify-content-between align-items-start"
+        >
+          <div>
+            <h5 href="/detail" class="text-info mb-1">
+              {{ formation.title }}
+            </h5>
+            <p class="mb-1">{{ formation.shortDescription }}</p>
+            <small class="text-muted"><strong>Catégorie : </strong>{{ formation.categoryName }}</small>
+          </div>
+        </li>
+      </ul>
+    </div>-->
+
+  <!-- Message si Aucun Résultat 
+    <div *ngIf="filteredFormations.length == 0" class="alert alert-warning text-center mt-4">
+      Aucune formation trouvée
+    </div>-->
+  <!-- Zone de recherche -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-8">
+      <!-- Groupe de saisie avec Bootstrap -->
+      <div class="input-group">
+        <!-- Champ de texte lié à la recherche avec [(ngModel)] -->
+        <input type="text" [(ngModel)]="searchText" placeholder="Entrez des mots-clés..." class="form-control" />
+        <!-- Bouton qui déclenche la méthode search() -->
+        <button (click)="search()" class="btn btn-primary">Rechercher</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Résultats de la recherche -->
+  <div *ngIf="filteredFormations.length > 0;" class="row">
+    <div class="col-md-8 mx-auto">
+      <!-- Liste des résultats de recherche -->
+      <ul class="list-group">
+        <!-- Itération sur les résultats filtrés -->
+        <li *ngFor="let formation of filteredFormations" class="list-group-item mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <a class="h5 mb-0 text-primary" href="../details">{{ formation.title }}</a>
+          </div>
+          <p class="mb-1 text-muted">{{ formation.shortDescription }}</p>
+          <p class="mb-0"><strong>Catégorie :</strong> {{ formation.categoryName }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Message affiché lorsqu'aucun résultat n'est trouvé -->
+  <ng-template #noResults>
+    <div class="row">
+      <div class="col-md-8 mx-auto text-center">
+        <!-- Texte indiquant l'absence de résultats -->
+        <p class="text-muted">
+          Aucune formation trouvée
+        </p>
+      </div>
+    </div>
+  </ng-template>
+</div>
