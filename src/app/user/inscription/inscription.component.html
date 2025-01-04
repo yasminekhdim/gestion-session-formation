@@ -1,4 +1,6 @@
+
 <div class="container my-5">
+  
     <!-- Titre principal -->
     <div class="row justify-content-center mb-4">
       <div class="col-md-8 text-center">
@@ -12,7 +14,7 @@
     <!-- Formulaire d'inscription -->
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form class="shadow-lg p-4 rounded bg-white">
+        <form  class="shadow-lg p-4 rounded bg-white">
           <!-- Champ Nom -->
           <div class="mb-3">
             <label for="nom" class="form-label fw-bold">Nom</label>
@@ -21,6 +23,7 @@
               id="nom"
               class="form-control"
               placeholder="Entrez votre nom"
+              [(ngModel)]="nom"
               required
             />
           </div>
@@ -32,6 +35,7 @@
               type="text"
               id="prenom"
               class="form-control"
+              [(ngModel)]="prenom"
               placeholder="Entrez votre prénom"
               required
             />
@@ -43,6 +47,7 @@
             <input
               type="email"
               id="email"
+              [(ngModel)]="email"
               class="form-control"
               placeholder="Entrez votre email"
               required
@@ -50,10 +55,10 @@
           </div>
   
           <!-- Bouton de soumission -->
-          <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary btn-lg px-5">
+          <div class="text-center mt-4" >
+            <a class="btn btn-primary btn-lg px-5"  [routerLink]="['/condidat',nom,prenom,email]">
               S'inscrire
-            </button>
+            </a>
           </div>
         </form>
       </div>

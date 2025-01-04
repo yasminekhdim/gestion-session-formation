@@ -3,21 +3,22 @@ import { CommonModule } from '@angular/common';
 
 
 import { UserRoutingModule } from './user-routing.module';
-import { RechercheComponent } from './recherche/recherche.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    RechercheComponent,
+  declarations: [
     NavbarComponent,
     InscriptionComponent,
     HomeComponent
+  ],
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    FormsModule
   ]
 })
 export class UserModule { }

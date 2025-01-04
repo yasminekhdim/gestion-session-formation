@@ -1,1 +1,48 @@
-<p>formation works!</p>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Liste des Formations</h1>
+  
+    <!-- Parcourir les catégories -->
+    <div *ngFor="let category of categories" class="mb-5">
+      <h2 class="text-primary">{{ category.nom }}</h2>
+      <p class="text-muted">{{ category.description }}</p>
+  
+      <table class="table table-striped table-bordered mt-3">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Charge Horaire</th>
+            <th>Programme</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let formation of category.formations">
+            <td>{{ formation.id }}</td>
+            <td>{{ formation.titre }}</td>
+            <td>{{ formation.description }}</td>
+            <td>{{ formation.chargeHoraire }} h</td>
+            <td>
+              <a 
+                [href]="formation.programmePdfUrl" 
+                target="_blank" 
+                class="btn btn-link text-decoration-none"
+              >
+                Voir le Programme
+              </a>
+            </td>
+            <td>
+              <a class="btn btn-sm btn-warning me-2" [routerLink]="['/editerFormation', formation.id]">
+                <i class="bi bi-pencil-square"></i> Éditer
+              </a>
+              <button class="btn btn-sm btn-danger" (click)="DeleteFormation(formation.id)" >
+                <i class="bi bi-trash"></i> Supprimer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

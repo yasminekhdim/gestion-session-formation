@@ -1,9 +1,54 @@
 <div class="container my-5">
-    <!-- En-tête de la page -->
-    <div class="text-center">
-        <h1 class="text-primary display-4">Détails de la Formation</h1>
-        <p class="lead">Découvrez toutes les informations sur cette formation.</p>
-        <a class="btn btn-primary" href="inscrir">s'inscrire</a>
-    </div>
+  <!-- En-tête de la page -->
+  <div class="text-center mb-4">
+    <h1 class="text-primary display-4">Formation Détails</h1>
+    <p class="lead">Découvrez toutes les informations sur cette formation.</p>
+  </div>
 
+  <!-- Contenu de la Formation -->
+  <div *ngFor="let categorie of categories">
+    <div *ngFor="let formation of categorie.formations">
+      <!-- Vérification que la formation correspond à l'ID donné -->
+      <div *ngIf="formation.id === id">
+        <div class="card p-4 shadow-sm mb-4">
+          <!-- Titre et description -->
+          <h2 class="text-info mb-3">{{ formation.titre }}</h2>
+          <p><strong>Description :</strong> {{ formation.description }}</p>
+          <p><strong>Charge Horaire :</strong> {{ formation.chargeHoraire }} heures</p>
+
+          <!-- Sessions -->
+          <h4 class="mt-4">Sessions à venir :</h4>
+          <ul class="list-group mb-3">
+            <p *ngFor="let session of sessions">
+              <li class="list-group-item" *ngIf="session.idFormation === formation.id">
+                <div>
+                  <p><strong>Date de Début :</strong> {{ session.dateDebut }}</p>
+                  <p><strong>Date de Fin :</strong> {{ session.dateFin }}</p>
+
+                  <!-- Formateurs associés -->
+                  <p><strong>Formateur(s) :</strong></p>
+                  <ul>
+                    <p *ngFor="let formateur of formateurs">
+                      <li *ngIf="formateur.idFormation === formation.id">
+                        {{ formateur.nom }}
+                      </li>
+                    </p>
+
+                  </ul>
+
+                  <!-- Bouton s'inscrire -->
+                  <a class="btn btn-outline-primary mt-2" href="inscrire">S'inscrire</a>
+                </div>
+              </li>
+            </p>
+          </ul>
+
+          <!-- Bouton pour le PDF -->
+          <a [href]="formation.programmePdfUrl" class="btn btn-info mt-3 d-block text-white" target="_blank">
+            <i class="bi bi-file-earmark-pdf"></i> Voir le programme PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

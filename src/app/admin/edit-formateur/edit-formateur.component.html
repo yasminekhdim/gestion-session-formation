@@ -1,0 +1,84 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Éditer Formateur</h1>
+  
+    <div *ngFor="let formateur of formateurs" class="shadow p-4 bg-light rounded" >
+        <div *ngIf="formateur.idFormateur === id">
+      
+      <form (ngSubmit)="onSave()">
+        
+        <div class="mb-3">
+          <label for="formateurId" class="form-label">ID Formateur</label>
+          <input
+            id="formateurId"
+            type="text"
+            [value]="formateur.idFormateur"
+            class="form-control"
+            readonly
+          />
+        </div>
+
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input
+              id="nom"
+              type="text"
+              [(ngModel)]="formateur.nom"
+              name="nom"
+              class="form-control"
+              required
+            />
+          </div>
+  
+        <!-- ID Formation -->
+        <div class="mb-3">
+          <label for="formationId" class="form-label">ID Formation</label>
+          <input
+            id="formationId"
+            type="number"
+            [(ngModel)]="formateur.idFormation"
+            name="idFormation"
+            class="form-control"
+            required
+          />
+        </div>
+
+        
+
+        <div class="mb-3">
+            <label for="nomf" class="form-label">nom formation</label>
+            <input
+              id="nomf"
+              type="text"
+              [(ngModel)]="formateur.nomFormtion"
+              name="nomf"
+              class="form-control"
+              required
+            />
+          </div>
+    
+  
+        <div class="mb-3">
+          <label for="idcat" class="form-label">ID catégorie</label>
+          <input
+            id="idcat"
+            type="text"
+            [(ngModel)]="formateur.idCategorie"
+            name="idcat"
+            class="form-control"
+            required
+          />
+        </div>
+  
+        <!-- Actions -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary me-3">
+            Sauvegarder
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

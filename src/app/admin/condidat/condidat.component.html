@@ -1,1 +1,34 @@
-<p>condidat works!</p>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Liste des Sessions</h1>
+  
+    <!-- Parcourir les catégories -->
+    <div class="mb-5">
+  
+      <table class="table table-striped table-bordered mt-3">
+        <thead class="table-dark">
+          <tr>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let condidat of condidats">
+            <td>{{ condidat.nom }}</td>
+            <td>{{ condidat.prenom }}</td>
+            <td>{{ condidat.email }}</td>
+            <td>
+              <a class="btn btn-sm btn-warning me-2" [routerLink]="['/editerCondidat', condidat.email]">
+                <i class="bi bi-pencil-square"></i> Éditer
+              </a>
+              <button type="button" class="btn btn-sm btn-danger" (click)="DeleteCondidat(condidat.email)">
+                <i class="bi bi-trash"></i> Supprimer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Éditer Condidat</h1>
+  
+    <div *ngFor="let condidat of condidats" class="shadow p-4 bg-light rounded" >
+        <div *ngIf="condidat.email === email">
+      
+      <form >
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input
+              id="nom"
+              type="text"
+              [(ngModel)]="condidat.nom"
+              name="nom"
+              class="form-control"
+              required
+            />
+          </div>
+        
+        <div class="mb-3">
+          <label for="prenom" class="form-label">prenom</label>
+          <input
+            id="prenom"
+            type="text"
+            [value]="condidat.prenom"
+            class="form-control"
+            readonly
+          />
+        </div>
+
+        
+  
+        <!-- ID Formation -->
+        <div class="mb-3">
+          <label for="email" class="form-label">email</label>
+          <input
+            id="email"
+            type="email"
+            [(ngModel)]="condidat.email"
+            name="email"
+            class="form-control"
+            required
+          />
+        </div>
+
+    
+  
+        <!-- Actions -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary me-3" (click)="onSave()">
+            Sauvegarder
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

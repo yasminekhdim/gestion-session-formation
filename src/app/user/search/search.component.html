@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  
+    <div class="text-center">
+        <h1 class="display-4 text-primary">Recherche Des Formation</h1>
+        <p class="lead mt-3">
+            Entrez le nom de la formation que vous souhaitez explorer et découvrez toutes les informations associées.
+        </p>
+    </div>
+
+    <!-- Champ de recherche -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-12 col-md-6">
+            <div class="input-group">
+                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Rechercher une formation"
+                    (input)="search()" />
+                <button class="btn btn-primary" (click)="search()">
+                    <i class="bi bi-search"></i> Rechercher
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message no results -->
+    <div *ngIf="filteredFormations.length === 0" class="alert alert-warning">
+        Aucune formation trouvée pour "{{ searchText }}"
+    </div>
+
+    <!-- Liste des formations filtrées -->
+    <div *ngIf="filteredFormations.length > 0">
+        <ul class="list-group">
+            <li *ngFor="let formation of filteredFormations" class="list-group-item">
+                <h5>{{ formation.titre }}</h5>
+                <p><strong>Description:</strong> {{ formation.description }}</p>
+                <p><strong>Charge Horaire:</strong> {{ formation.chargeHoraire }} heures</p>
+                <a [href]="formation.programmePdfUrl" target="_blank" class="btn btn-info btn-sm">
+                    Voir le programme PDF
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

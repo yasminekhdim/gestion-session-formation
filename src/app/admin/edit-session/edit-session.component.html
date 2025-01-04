@@ -1,0 +1,73 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Éditer la Session</h1>
+  
+    <!-- Formulaire pour la session sélectionnée -->
+    <div *ngFor="let session of sessions" class="shadow p-4 bg-light rounded" >
+        <div *ngIf="session.idSession === id">
+      
+      <form (ngSubmit)="onSave()">
+        
+        <!-- ID de la session -->
+        <div class="mb-3">
+          <label for="sessionId" class="form-label">ID Session</label>
+          <input
+            id="sessionId"
+            type="text"
+            [value]="session.idSession"
+            class="form-control"
+            readonly
+          />
+        </div>
+  
+        <!-- ID Formation -->
+        <div class="mb-3">
+          <label for="formationId" class="form-label">ID Formation</label>
+          <input
+            id="formationId"
+            type="number"
+            [(ngModel)]="session.idFormation"
+            name="idFormation"
+            class="form-control"
+            required
+          />
+        </div>
+  
+        <!-- Date de début -->
+        <div class="mb-3">
+          <label for="dateDebut" class="form-label">Date de Début</label>
+          <input
+            id="dateDebut"
+            type="date"
+            [(ngModel)]="session.dateDebut"
+            name="dateDebut"
+            class="form-control"
+            required
+          />
+        </div>
+  
+        <!-- Date de fin -->
+        <div class="mb-3">
+          <label for="dateFin" class="form-label">Date de Fin</label>
+          <input
+            id="dateFin"
+            type="date"
+            [(ngModel)]="session.dateFin"
+            name="dateFin"
+            class="form-control"
+            required
+          />
+        </div>
+  
+        <!-- Actions -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary me-3">
+            Sauvegarder
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
